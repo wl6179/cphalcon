@@ -69,7 +69,7 @@ class DynamicOperationsTest extends UnitTest
      *
      * @test
      * @author Wojciech Ślawski <jurigag@gmail.com>
-     * @issue 12766
+     * @issue  https://github.com/phalcon/cphalcon/issues/12766
      * @since  2017-04-04
      */
     public function shouldSaveSnapshotWhenHavingPublicPropertyWithNullValue()
@@ -201,11 +201,33 @@ class DynamicOperationsTest extends UnitTest
     }
 
     /**
+     * Tests dynamic update soft delete with renamed model.
+     *
+     * @test
+     * @author limx <715557344@qq.com>
+     * @since  2018-02-24
+     */
+    public function shouldWorkUsingDynamicUpdateSoftDeleteForRenamedModel()
+    {
+        $this->specify(
+            'Dynamic update soft delete for renamed model does not work as expected',
+            function () {
+                $this->setUpConnectionAwareModelsManager(MysqlFactory::class);
+                $this->setUpEventsManager();
+
+                $persona = Personers::findFirst();
+                expect($persona->delete())->true();
+                expect($persona->status)->equals('X');
+            }
+        );
+    }
+
+    /**
      * Tests dynamic update and rawvalue
      *
      * @test
      * @author limingxinleo <715557344@qq.com>
-     * @issue  13170
+     * @issue  https://github.com/phalcon/cphalcon/issues/13170
      * @since  2017-11-20
      */
     public function shouldWorkUsingDynamicUpdateForRawValue()

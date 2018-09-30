@@ -8,7 +8,6 @@ use Phalcon\Acl\Resource;
 use Phalcon\Test\Acl\TestResourceAware;
 use Phalcon\Test\Acl\TestRoleAware;
 use Phalcon\Test\Acl\TestRoleResourceAware;
-use PHPUnit_Framework_Exception;
 use Phalcon\Test\Module\UnitTest;
 use Phalcon\Acl\Adapter\Memory;
 
@@ -421,7 +420,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests negation of inherited roles
      *
-     * @issue   65
+     * @issue   https://github.com/phalcon/cphalcon/issues/65
      *
      * @author  Nikolaos Dimopoulos <nikos@phalconphp.com>
      * @since   2014-10-04
@@ -458,7 +457,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests ACL Resources with numeric values
      *
-     * @issue   1513
+     * @issue   https://github.com/phalcon/cphalcon/issues/1513
      *
      * @author  Nikolaos Dimopoulos <nikos@phalconphp.com>
      * @since   2014-10-04
@@ -483,7 +482,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests function in Acl Allow Method
      *
-     * @issue   11235
+     * @issue   https://github.com/phalcon/cphalcon/issues/11235
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2015-12-16
@@ -523,7 +522,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests function in Acl Allow Method
      *
-     * @issue   12004
+     * @issue   https://github.com/phalcon/cphalcon/issues/12004
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2016-07-22
@@ -565,7 +564,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests function in Acl Allow Method without arguments
      *
-     * @issue   12094
+     * @issue   https://github.com/phalcon/cphalcon/issues/12094
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2016-06-05
@@ -608,7 +607,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests function in Acl Allow Method without arguments
      *
-     * @issue   12094
+     * @issue   https://github.com/phalcon/cphalcon/issues/12094
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2016-06-05
@@ -647,8 +646,7 @@ class MemoryTest extends UnitTest
             },
             [
                 'throws' => [
-                    // We may need change this for all 7.x series
-                    PHP_VERSION_ID >= 70200 ? 'PHPUnit\Framework\Exception' : 'PHPUnit_Framework_Exception',
+                    \PHPUnit_Framework_Exception::class,
                     "You didn't provide any parameters when check Guests can update Post. We will use default action when no arguments."
                 ]
             ]
@@ -658,7 +656,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests acl with adding new rule for role after adding wildcard rule
      *
-     * @issue   2648
+     * @issue   https://github.com/phalcon/cphalcon/issues/2648
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2016-10-01
@@ -686,7 +684,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests adding wildcard rule second time
      *
-     * @issue   2648
+     * @issue   https://github.com/phalcon/cphalcon/issues/2648
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2016-10-01
@@ -714,7 +712,7 @@ class MemoryTest extends UnitTest
     /**
      * Tests adding wildcard rule second time
      *
-     * @issue   12573
+     * @issue   https://github.com/phalcon/cphalcon/issues/12573
      *
      * @author  Wojciech Slawski <jurigag@gmail.com>
      * @since   2017-01-25
