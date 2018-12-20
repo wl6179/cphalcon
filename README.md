@@ -174,3 +174,224 @@ Support us with a monthly donation and help us continue our activities. [[Become
 Phalcon is open source software licensed under the BSD 3-Clause License.
 Copyright © 2011-present, Phalcon Team.<br>
 See the [LICENSE.txt](https://github.com/phalcon/cphalcon/blob/master/LICENSE.txt) file for more.
+
+
+
+
+
+
+
+
+shixu
+
+```sequence
+participant 客户端API
+participant [RPC MQ]
+participant 守护进程(处理逻辑)
+participant [CALLBACK MQ]
+
+客户端API->[RPC MQ]: 请求 服务消息 
+[RPC MQ]-->>守护进程(处理逻辑): 监听获取 服务消息 
+守护进程(处理逻辑)->[CALLBACK MQ]: 发送 回调消息 
+[CALLBACK MQ]-->>客户端API: 监听获取 回调消息
+客户端API-->>客户端API: ok得到返回结果
+```
+
+
+
+
+
+
+
+```sequence
+participant A
+participant B
+participant C
+A->B: 同步请求方法(主动)
+B-->>C: 异步返回请求
+Note left of A: 这边啦！
+C-->>A: 异步返回Success
+Note Right Of A: 那边啦！
+```
+
+
+
+
+
+
+
+liucheng
+
+```flow
+st=>start: 开始
+op=>operation: 操作1
+cond=>condition: 操作成功?
+e=>end: 结束
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+```flow
+st=>start: Start|past:>http://www.google.com[blank]
+e=>end: End:>http://www.google.com
+op1=>operation: My Operation|past
+op2=>operation: Stuff|current
+sub1=>subroutine: My Subroutine|invalid
+cond=>condition: Yes 
+or No?|approved:>http://www.baidu.com
+c2=>condition: Good idea|rejected
+io=>inputoutput: catch something...|request
+
+st->op1(right)->cond
+cond(yes, right)->c2
+cond(no)->sub1(left)->op1
+c2(yes)->io->e
+c2(no)->op2->e
+
+```
+
+
+
+
+
+gantt
+
+```gan
+title A Gantt Diagram
+    dateFormat  YYYY-MM-DD
+    section Section
+    A task           :a1, 2014-01-01, 30d
+    Another task     :after a1  , 20d
+    section Another
+    Task in sec      :2014-01-12  , 12d
+    another task      : 24d
+```
+
+
+
+
+
+what?
+
+```mermaid
+graph TD
+client1-->|read / write|SVN((SVN server))
+client2-->|read only|SVN
+client3-->|read / write|SVN
+client4-->|read only|SVN
+client5(...)-->SVN
+SVN---|store the data|sharedrive
+
+```
+
+
+
+```mermaid
+graph TD
+    id[带文本的矩形]
+    id4(带文本的圆角矩形)
+    id3>带文本的不对称的矩形]
+    id1{带文本的菱形}
+    id2((带文本的圆形))
+```
+
+
+
+```mermaid
+graph LR
+    A[A] --> B[B] 
+    A1[A] --- B1[B] 
+    A4[A] -.- B4[B] 
+    A5[A] -.-> B5[B] 
+    A7[A] ==> B7[B] 
+    A2[A] -- 描述 --- B2[B] 
+    A3[A] -- 描述 --> B3[B] 
+    A6[A] -. 描述 .-> B6[B] 
+    A8[A] == 描述 ==> B8[B]
+```
+
+
+
+```mermaid
+graph TB
+    c1-->a2
+    subgraph one
+    a1-->a2
+    end
+    subgraph two
+    b1-->b2
+    end
+    subgraph three
+    c1-->c2
+    end
+```
+
+
+
+```mermaid
+graph LR
+    id1(Start)-->id2(Stop)
+    style id1 fill:#f9f,stroke:#333,stroke-width:4px,fill-opacity:0.5
+    style id2 fill:#ccf,stroke:#f66,stroke-width:2px,stroke-dasharray: 10,5
+
+```
+
+
+
+```mermaid
+graph LR
+    start[开始] --> input[输入A,B,C]
+    input --> conditionA{A是否大于B}
+    conditionA -- YES --> conditionC{A是否大于C}
+    conditionA -- NO --> conditionB{B是否大于C}
+    conditionC -- YES --> printA[输出A]
+    conditionC -- NO --> printC[输出C]
+    conditionB -- YES --> printB[输出B]
+    conditionB -- NO --> printC[输出C]
+    printA --> stop[结束]
+    printC --> stop
+    printB --> stop
+
+```
+
+
+
+TODO List
+
+```markdown
+- [ ] **小专栏 Markdown 编辑器开发**
+
+    - [ ] 增加 TOC 语法
+
+    - [ ] 增加流程图、序列图、甘特图、Todo 列表
+
+    - [x] 新增Todo列表功能 [语法参考](https://github.com/blog/1375-task-lists-in-gfm-issues-pulls-comments)
+
+    - [x] 改进 LaTex 功能
+
+        - [x] 修复 LaTex 公式渲染问题
+
+        - [x] 新增 LaTex 公式编号功能 [语法参考](http://docs.mathjax.org/en/latest/tex.html#tex-eq-numbers)
+
+- [ ] **最近小专栏推广**
+
+    - [x] 唐巧微信公众号广告投放
+
+    - [ ] 二月份小专栏微信服务号文章准备
+
+    - [ ] 邀请更多技术牛人到小专栏写作
+```
+
+
+
+
+
+
+
+
+
+
+
+
